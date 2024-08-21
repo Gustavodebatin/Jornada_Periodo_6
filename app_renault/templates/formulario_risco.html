@@ -1,30 +1,44 @@
+
+
+{% extends 'base.html' %}
 {% block conteudo %}
+{% load static %}
 {% load crispy_forms_tags %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<h1 style="text-align: center; margin-top: 30px;">Registro</h1>
-<br>
+<style>
+    .master{
+        display: flex;
+        align-items: center;
+        margin-top: 15%;
+    }
+    
+</style>
+<h1>Registro</h1>
+<div class="master">
 
-<div class="container">
-    <form method="post" id="RiscoForm">
-        {% csrf_token %}
+    
 
-        <!-- Início das Linhas de Três Campos -->
-        {% for field in form %}
-            {% if forloop.first or forloop.counter0|divisibleby:3 %}
-                <div class="row mb-3">
-            {% endif %}
+    <div class="container">
+        <form method="post" id="RiscoForm" class="">
+            {% csrf_token %}
 
-            <div class="col-md-4">
-                {{ field|as_crispy_field }}
-            </div>
+            <!-- Início das Linhas de Três Campos -->
+            {% for field in form %}
+                {% if forloop.first or forloop.counter0|divisibleby:3 %}
+                    <div class="row mb-3">
+                {% endif %}
 
-            {% if forloop.last or forloop.counter0|add:1|divisibleby:3 %}
+                <div class="col-md-4">
+                    {{ field|as_crispy_field }}
                 </div>
-            {% endif %}
-        {% endfor %}
-        <!-- Fim das Linhas de Três Campos -->
-        <button class="btn btn-primary btn-sm">Salvar</button>
-        <a href="{% url 'listar-risco' %}" class="btn btn-primary btn-sm voltar" title="Listar">Voltar</a>
-    </form>
+
+                {% if forloop.last or forloop.counter0|add:1|divisibleby:3 %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <!-- Fim das Linhas de Três Campos -->
+            <button class="btn btn-primary btn-sm">Salvar</button>
+            <a href="{% url 'listar-risco' %}" class="btn btn-primary btn-sm voltar" title="Listar">Voltar</a>
+        </form>
 </div>
-{% endblock %}
+{% endblock conteudo %}

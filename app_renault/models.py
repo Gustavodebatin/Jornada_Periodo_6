@@ -41,3 +41,6 @@ class Solucao(models.Model):
     data_resolucao = models.DateField()
     id_risco = models.ForeignKey(Risco, on_delete=models.CASCADE, to_field='id')
 
+class item(models.Model):
+    name = models.CharField(max_length=100)
+

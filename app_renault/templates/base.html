@@ -40,7 +40,7 @@
     }
 
     .sidebar.collapsed {
-        width: 1.5rem;
+        width: 4rem;
     }
 
     .main-content {
@@ -284,50 +284,6 @@
         margin-left: 4rem;
         /* Ajuste para a largura do sidebar colapsado */
     }
-
-    .blocos {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        /* Largura total dos dois blocos */
-        box-sizing: border-box;
-        margin-top: 4%;
-
-    }
-
-    .grafico,
-    .tarefa {
-        width: 45%;
-        /* Largura de 40% da tela para cada quadrado */
-        height: 60%;
-        /* Altura de 40% da altura da tela */
-        background-color: #ffffff;
-        border: 1px solid #ccc;
-        margin: 3%;
-
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 10px rgba(247, 216, 216, 0.1);
-        border-radius: 5%;
-    }
-
-    .tarefa {
-        margin-left: -20%;
-
-    }
-
-    .fluxo{
-    
-        display: block;
-        
-    }
-
-    .baixo{
-        width: 100%;
-        height: 20%;
-        background-color: white;
-    }
-    
 </style>
 
 <body>
@@ -342,11 +298,12 @@
 
         <div class="sidebar-links">
             <ul>
-                <li style="margin-top: 3rem;"><a href="#home" class="active"><i class="fa regular fa-house"></i>
+                <li style="margin-top: 3rem;"><a href="{% url 'home' %}" class="active"><i class="fa regular fa-house"></i>
                         <span>Home</span></a></li>
-                <li><a href="risco"><i class="fas fa-exclamation-triangle"></i> <span>Risco</span></a></li>
-                <li><a href="#solution"><i class="fa-regular fa-lightbulb"></i> <span>Solução</span></a></li>
+                <li><a href="{% url 'listar-risco' %}"><i class="fas fa-exclamation-triangle"></i> <span>Risco</span></a></li>
+                <li><a href="{% url 'listar-solucao' %}"><i class="fa-regular fa-lightbulb"></i> <span>Solução</span></a></li>
                 <li><a href="#settings"><i class="fas fa-cog"></i> <span>Configurações</span></a></li>
+                
             </ul>
         </div>
         <div class="sidebar_profile">
@@ -354,21 +311,15 @@
         </div>
     </nav>
 
+    <div class="grafico">
+        <!--Onde vai ficar meus graficos-->
+    </div>
 
-    <div class="blocos">
-        <div class="grafico">
-            <!--Onde vai ficar meus graficos-->
-        </div>
-
-        <div class="tarefa">
-            <!--Onde vai ficar minhas tarefas-->
-        </div>
+    <div class="tarefas">
+        <!--Onde vai ficar minhas tarefas-->
     </div>
 
     <div class="fluxo">
-        <div class="baixo">
-
-        </div>
         <!--Onde vai ficar meu fluxo-->
     </div>
     {% block conteudo %}
